@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "WishList Page";
+}
+
+@if (Request.IsAuthenticated)
+{
+
+    <div class="div-block"></div>
+    <div class="sendmail-item">
+        Email To:
+        <input type="text" id="ToEmail" />
+        
+        @Html.ActionLink("Send Email", "sendEmail", "ProductBrowse", null, htmlAttributes: new { @class = "sendmail_favorite w-button" , onclick="SubmitToEmail(this)" })
+    </div>
+
+    <script>
+        function SubmitToEmail(obj) {
+            obj.href = obj.href + '?ToEmail='+document.getElementById("ToEmail").value;
+        }
+    </script>
+
+        foreach (var item in Model)
+        {
+
+
+        <div class="div-block"></div>
+        <div class="favorite-item">
+            @Html.ActionLink("REMOVE", "RemoveFromWishList", "ProductBrowse", new { pid = item.Id }, htmlAttributes: new { @class = "remove_favorite w-button" })
+            <img src="@item.LargeImage" width="100" class="favorite_item_image">
+            <div class="favorite_product_name">@item.Title</div><a href="@item.DetailPageURL" class="shop_favorite w-button">SHOP</a>
+        </div>
+
+
+
+        }
+
+        }

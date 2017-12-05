@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using SampleAuth1.Models;
+using SampleAuth1.DBService;
 
 namespace SampleAuth1
 {

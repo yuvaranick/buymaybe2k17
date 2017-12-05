@@ -13,9 +13,9 @@ namespace SampleAuth1.DBService
     public class SeedMyDb
     {
 
-        public void FillDB(SampleAuth1.Models.MyDbContext context)
+        public void FillDB(ApplicationDbContext context)
         {
-            string[] Catgry = new string[] { "1000" };
+            string[] Catgry = new string[] { "1000", "493964", "2619526011", "165797011", "165795011" };
 
             //define column of data table
             DataTable dt = new DataTable();
@@ -37,7 +37,7 @@ namespace SampleAuth1.DBService
             {
                 dt.Clear();
                 url.BrowseNode = category;
-                int bs = Convert.ToInt32(url.BrowseNode);
+                Int64 bs = Convert.ToInt64(url.BrowseNode);
                 for (int i = 1; i < 11; i++)
                 {
                     string XmlResponse;
@@ -63,37 +63,27 @@ namespace SampleAuth1.DBService
                             p.ASIN = item.Element(ns + "ASIN").Value;
                             p.DetailPageURL = item.Element(ns + "DetailPageURL").Value;
                             p.LargeImage = item.Element(ns + "LargeImage")?.Element(ns + "URL")?.Value;
-                            p.Category = bs;
+                            p.CategoryId = bs;
                             p.OfferListingId = item.Descendants(ns + "OfferListingId")?.FirstOrDefault()?.Value;
                             p.Title = item.Descendants(ns + "Title")?.FirstOrDefault()?.Value;
                             //put switch for category
                             p.OtherInfo = "Author: " + item.Descendants(ns + "Author")?.FirstOrDefault()?.Value; ;
                             // dt.Rows.Add(p.DetailPageURL, p.ASIN, p.LargeImage, p.Title, p.Brand, p.Category, p.OfferListingId, p.OtherInfo);
-                            context.Products.Add(p);
+                            if (p.ASIN != null && p.DetailPageURL != null && p.LargeImage != null && p.Title != null)
+                            {
+                                context.Products.Add(p);
+                            }
+                            
                         }
                     }
                 }//end of category
 
                 //connection string
                 string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                /* SqlConnection cn = new SqlConnection(connectionString);
-                 cn.Open();
-                     using (SqlBulkCopy bulkCopy = new SqlBulkCopy(cn))
-                     {
-                         bulkCopy.DestinationTableName =
-                          "dbo.Products";
+               
 
-                         try
-                         {
-                             // Write from the source to the destination.
-                             bulkCopy.WriteToServer(dt);
-                         }
-                         catch (Exception ex)
-                         {
-                             Console.WriteLine(ex.Message);
-                         }
-                     }
-                     cn.Close();*/
+                // SleepTimer 10 seconds for Amazon Request
+                System.Threading.Thread.Sleep(10000);
             }
         }
     }

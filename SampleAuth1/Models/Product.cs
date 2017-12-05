@@ -18,11 +18,10 @@ namespace SampleAuth1.Models
 
         public string Title { get; set; }
         public string Brand { get; set; }
-        public int Category { get; set; }
+        public Int64 CategoryId { get; set; }
         public string OfferListingId { set; get; }
         public string OtherInfo { get; set; }
 
-        public ICollection<WishList> WishList { get; set; }
-        public ICollection<ScrapList> ScrapList { get; set; }
+
     }
 }

@@ -4,60 +4,26 @@
     ViewBag.Title = "Product Browse Page";
 }
 
-<div class="text-block-2">Here is your Product Browse Page!!!</div>
-<div class="div-block"></div>
-<div class="add_remove">
-    <a href="#" class="button_remove w-button">x</a>
-    <a href="#" class="button_add w-button">+</a>
-</div>@*Write a function to update in Database*@
-
-<div class="container">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval=false>
+@if (Request.IsAuthenticated)
+{
 
 
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-   
-
-
-
-            @{ int i = 0;
-
-
-                foreach (var item in Model)
-                {
-
-                    <div class="item">
-                        <img src="@item.LargeImage" alt="Product">
-
-                        <div class="carousel-caption">
-                                <b>@item.Title</b><br />
-                                <i>@item.OtherInfo</i>
-                            </div>
-                    </div>
-                    if (i == 0)
-                    {<div class="item active">
-                <img src="@item.LargeImage" alt="Product">
-                  <div class="carousel-caption">
-                        <b>@item.Title</b><br/>
-                        <i>@item.OtherInfo</i>
-                    </div>
-            </div>
-                        i++;
-                    }
-
-                }}
+    foreach (var item in Model)
+    {
+        <div class="div-block"></div>
+        <div class="add_remove">
+            @Html.ActionLink("x", "notFav", "ProductBrowse", new { pid = item.Id }, htmlAttributes: new { @class = "button_remove w-button" })
+            @Html.ActionLink("+", "AddToFav", "ProductBrowse", new { pid = item.Id }, htmlAttributes: new { @class = "button_add w-button" })
 
         </div>
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-</div>
+        <div class="product-view w-container">
+            <img src="@item.LargeImage" width="600" height="600" srcset="@item.LargeImage 500w, @item.LargeImage 600w" sizes="(max-width: 479px) 90vw, (max-width: 767px) 80vw, (max-width: 991px) 582.390625px, 600px" class="product-image"></div>
+        <div class="section">
+            <div class="product-name"></div>
+        </div>
+        <div class="product-description"></div>
+
+    }
+}
+
+

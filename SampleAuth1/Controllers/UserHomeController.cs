@@ -12,7 +12,7 @@ namespace SampleAuth1.Controllers
         public ActionResult Index()
         {
             //Console.WriteLine("");
-            return View();
+            return RedirectToAction("Index", "Usercategories");
         }
     }
 }

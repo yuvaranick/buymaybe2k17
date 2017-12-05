@@ -8,14 +8,13 @@ namespace SampleAuth1.Models
     public class ScrapList
     {
         public int Id { set; get; }
-        //[ForeignKey("UerId")]
-        public virtual ApplicationUser User { get; set; }
-        //[ForeignKey("ProductId")]
-        public virtual Product Product { get; set; }
+        public String ApplicationUser_Id { get; set; }
+        public int Product_Id { get; set; }
         public ScrapList()
         {
-            User = new ApplicationUser();
-            Product = new Product();
+
         }
+
+
     }
 }

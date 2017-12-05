@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $("#target").click(function () {
+        function saveCategorySelection() {
+            var data = { 'Categories': [] };
+            $(":checked").each(function () {
+                data['Categories'].push($(this).val());
+            });
+            $.ajax({
+                type: 'post',
+                url: '/Usercategories/saveUserCategories',
+                dataType: 'json',
+                data: data,
+                success: function (response) {
+                    updateMsgOnSuccess(response.Message);
+                },
+                error: function (errorObject) {
+                    alert("error: " + errorObject.responseText)
+                }
+            })
+        }
+    }
+    function updateMsgOnSuccess(msg)
+    {
+        document.getElementById('UCMessages').innerHTML = msg ;
+    }
+
+
+</script>
+
+<br />
+<br />
+
+<div id="UCMessages"></div>
+<br />
+<table id="CategorySelectionList" align="center">
+            @foreach (var category in Model)
+            {
+        <tr>
+            <td>
+                <input type="checkbox" name="Categories" value="@category.CategoryId" checked="@category.Selected">
+            </td>
+            <td>
+                @category.CategoryName
+            </td>
+        </tr>
+            }
+            <tr>
+                <td>
+                    <input type="button" onclick="saveCategorySelection()" value="Save">
+                </td>
+            </tr>
+        </table>
+
+
+
+
+

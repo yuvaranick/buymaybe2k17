@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+
+
+@Html.ActionLink("ManageProducts", "ManageProducts", "ProductAdmin", routeValues: null, htmlAttributes: new { @class = "nav-link-6 signup w-nav-link" })
+@Html.ActionLink("ManageCategory", "ManageCategory", "ProductAdmin", routeValues: null, htmlAttributes: new { @class = "nav-link-6 signup w-nav-link" })

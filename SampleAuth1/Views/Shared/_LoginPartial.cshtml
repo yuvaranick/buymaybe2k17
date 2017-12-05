@@ -7,9 +7,9 @@
 
         <nav role="navigation" class="nav-menu-2 w-nav-menu">
             @Html.ActionLink("Browse", "Index", "ProductBrowse", routeValues: null, htmlAttributes: new { @class = "nav-link-4 w-nav-link" })
-            @Html.ActionLink("Favorites", "Favorites", "ProductBrowse", routeValues: null, htmlAttributes: new { @class = "nav-link-5 w-nav-link" })
+            @Html.ActionLink("WishList", "WishList", "ProductBrowse", routeValues: null, htmlAttributes: new { @class = "nav-link-5 w-nav-link" })
+            @Html.ActionLink("Settings", "Index", "Usercategories", routeValues: null, htmlAttributes: new { @class = "nav-link-6 w-nav-link" })
 
-            <a href="settings.html" class="nav-link-6 w-nav-link">Settings</a>
             <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link-7 w-nav-link">Log off</a>
         </nav>
     }

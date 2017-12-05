@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,13 +9,15 @@ namespace SampleAuth1.Models
     public class WishList
     {
         public int Id { set; get; }
-        public string ASIN { set; get; }
-        public virtual ApplicationUser User { get; set; }
-        public virtual Product Product { get; set; }
+        [Required]
+        public String  ApplicationUser_Id { get; set; }
+        [Required]
+        public int Product_Id { get; set; }
         public WishList()
         {
-            User = new ApplicationUser();
-            Product = new Product();
+
         }
+
+        
     }
 }

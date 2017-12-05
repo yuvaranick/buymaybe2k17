@@ -29,10 +29,10 @@ namespace SampleAuth1
 
             bundles.Add(new ScriptBundle("~/bundles/buymaybe").Include(
                         "~/Content/js/buymaybe.js"));
-            bundles.Add(new StyleBundle("~/Content/css/css").Include(
-                      "~/Content/css/normalize.css",
-                      "~/Content/css/components.css",
-                      "~/Content/css/buymaybe.css"));
+            bundles.Add(new StyleBundle("~/css/css").Include(
+                      "~/css/normalize.css",
+                      "~/css/components.css",
+                      "~/css/buymaybe.css"));
         }
     }
 }

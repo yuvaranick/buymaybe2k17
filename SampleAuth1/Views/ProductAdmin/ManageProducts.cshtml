@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "ManageProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ManageProducts</h2>
+
+<table style="width:100%;text-align:left">
+    <tr>
+        <th>ProductId</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>ImageURL</th>
+        <th>Details</th>
+    </tr>
+    <tr>
+        <td>Jill</td>
+        <td>Smith</td>
+        <td>50</td>
+        <td>Smith</td>
+        <td><a href="https://www.google.com">Detail</a></td>
+    </tr>
+    <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td>
+        <td>Smith</td>
+        <td><a href="https://www.google.com">Detail</a></td>
+    </tr>
+    <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td>
+        <td>Smith</td>
+        <td><a href="https://www.google.com">Detail</a></td>
+    </tr>
+    <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>94</td>
+        <td>Smith</td>
+        <td><a href="https://www.google.com">Detail</a></td>
+    </tr>
+</table>
+
+@Html.ActionLink("Home", "Index", "ProductAdmin", routeValues: null, htmlAttributes: new { @class = "nav-link-6 signup w-nav-link" })
