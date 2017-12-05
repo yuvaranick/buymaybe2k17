@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        @using (Html.BeginForm("Index", "Category", FormMethod.Post))
+            {
+            <div class="div-block"></div>
+            <div class="form-block w-form">
+                <h2> Choose Category</h2>
+                @foreach (var cat in Model)
+                {
+                    int i = cat.Id;
+                    if (cat.Selected == true)
+                    {
+                        <span>@Html.RadioButton("Category", i, new { @checked = "checked" }) @cat.Name</span><br />
+                    }
+                    else
+                    {
+                        <span>@Html.RadioButton("Category", i) @cat.Name</span><br />
+                    }
+
+                }
+                <input type="submit" value="Submit" class="submit-button w-button" />
+            </div>
+            <br /><br /><br />
+             
+        }
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

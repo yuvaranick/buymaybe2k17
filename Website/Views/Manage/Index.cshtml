@@ -1,0 +1,28 @@
+﻿@model Website.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="div-block"></div>
+
+<div class="form-block w-form">
+
+    <p class="text-success">@ViewBag.StatusMessage</p>
+
+    <div>
+        <h4>Change your account settings</h4>
+        <hr />
+                [
+                @if (Model.HasPassword)
+            {
+                    @Html.ActionLink("Change your password", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword")
+                }
+                ]
+  
+    </div>
+  </div>

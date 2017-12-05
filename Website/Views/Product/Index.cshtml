@@ -1,0 +1,28 @@
+﻿ 
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model == null)
+{ <h2> No Products Available!! </h2>}
+else
+{ 
+
+
+    <div class="div-block"></div>
+    <div class="add_remove">
+        @Html.ActionLink("x", "Create", "ScrapList", new { id = Model.Id }, htmlAttributes: new { @class = "button_remove w-button" })
+        @Html.ActionLink("+", "Create", "WishLists", new { id = Model.Id }, htmlAttributes: new { @class = "button_add w-button" })
+
+    </div>
+    <div class="product-view w-container">
+        <img src="@Model.LargeImage" width="600" height="600" srcset="@Model.LargeImage 500w, @Model.LargeImage 600w" sizes="(max-width: 479px) 90vw, (max-width: 767px) 80vw, (max-width: 991px) 582.390625px, 600px" class="product-image">
+    </div>
+    <div class="section">
+        <div class="product-name"></div>
+    </div>
+    <div class="product-description"></div>
+
+}
+
